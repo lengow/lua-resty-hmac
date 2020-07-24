@@ -60,7 +60,7 @@ typedef struct hmac_ctx_st
     unsigned char key[128];
     } HMAC_CTX;
 
-void HMAC_CTX_init(HMAC_CTX *ctx);
+void HMAC_CTX_reset(HMAC_CTX *ctx);
 void HMAC_CTX_cleanup(HMAC_CTX *ctx);
 
 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,const EVP_MD *md, ENGINE *impl);
