@@ -61,7 +61,6 @@ typedef struct hmac_ctx_st
     } HMAC_CTX;
 
 void HMAC_CTX_reset(HMAC_CTX *ctx);
-void HMAC_CTX_cleanup(HMAC_CTX *ctx);
 
 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,const EVP_MD *md, ENGINE *impl);
 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, size_t len);
@@ -98,7 +97,9 @@ function _M.new(self, key, hash_algo)
         return nil
     end
 
-    ffi_gc(ctx, C.HMAC_CTX_cleanup)
+    ffi_gc(ctx, C.HMAC_CTX_reset)
+
+    
 
     return setmetatable({ _ctx = ctx }, mt)
 end
