@@ -90,7 +90,7 @@ _M.ALGOS = hashes
 function _M.new(self, key, hash_algo)
     local ctx = ffi_new(ctx_ptr_type)
 
-    C.HMAC_CTX_init(ctx)
+    C.HMAC_CTX_reset(ctx)
 
     local _hash_algo = hash_algo or hashes.md5
 
